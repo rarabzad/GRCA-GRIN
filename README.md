@@ -12,6 +12,15 @@ Ensure you have the following R packages installed:
 ```r
 install.packages(c("httr", "readr", "dplyr", "tidyr", "lubridate", "stringr"))
 ```
+then load the packages:
+```r
+library(httr)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(stringr)
+```
 
 ## Functions
 
