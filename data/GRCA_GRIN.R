@@ -147,3 +147,22 @@ for(i in 74:nrow(station_list))
     }
   }
 }
+
+library(lubridate)
+library(xts)
+files <- list.files(pattern = "*.csv")
+data <- lapply(files, read.csv)
+names(data) <- gsub(".csv", "", files)
+
+for (i in 1:length(data))
+{
+  timestamps <- ymd_hms(data[[i]]$Timestamp)
+  time_diffs <- diff(timestamps)  # Returns difftime object
+  mode_diff <- as.numeric(names(sort(table(as.numeric(time_diffs)), decreasing = TRUE)[1]))  # Find mode
+  interval_unit <- units(time_diffs)  # e.g., "secs", "mins", "hours"
+  full_time_seq <- seq(from = min(timestamps), to = max(timestamps), by = paste(mode_diff, interval_unit))
+  xts_data <- xts(x = data[[i]]$Value, order.by = timestamps)
+  filled_data <- merge(xts_data, xts(, order.by = full_time_seq), all = TRUE)
+  df_out <- data.frame(Timestamp = index(filled_data), Value = coredata(filled_data))
+  write.csv(df_out, paste0(names(data)[i], "_blank_rows_added.csv"), row.names = FALSE)
+}
