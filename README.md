@@ -1,7 +1,7 @@
 # Water Data Retrieval from Grand River API
 
 ## Overview
-This project provides a set of R functions to retrieve water data from the Grand River API. The script allows users to:
+This repo provides a set of R functions to retrieve water data from the Grand River API. The script allows users to:
 - Fetch a list of available stations.
 - Retrieve time series data for a specified station over multiple years.
 - Save the data in CSV format with sanitized filenames.
