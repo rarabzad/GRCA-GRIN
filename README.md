@@ -137,7 +137,7 @@ station_list <- get_station_list()
 start_date <- "1980-01-01"
 end_date <- "2024-12-30"
 
-for(i in 74:nrow(station_list)) {
+for(i in 1:nrow(station_list)) {
   data <- tryCatch({
     get_station_data(station_no = as.character(station_list$station_no[i]), start_date = start_date, end_date = end_date)
   }, error = function(e) {
