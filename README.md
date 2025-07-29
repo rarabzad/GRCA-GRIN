@@ -178,8 +178,3 @@ for (i in 1:length(data))
 }
 ```
 
-## Conclusion
-This script provides a robust and automated way to retrieve historical water data. It efficiently handles multiple-year requests, sanitizes filenames, and ensures data integrity by gracefully handling API errors.
-
-Feel free to contribute, report issues, or improve this workflow! 🚀
-
